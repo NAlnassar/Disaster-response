@@ -1,24 +1,73 @@
 import sys
-
+sys.setrecursionlimit(10000)
+#Data Manipulation
+import pandas as pd
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+import re
+#Database and Model
+from sqlalchemy import create_engine
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.multioutput import MultiOutputClassifier
+from sklearn.ensemble import RandomForestClassifier
+ 
+#Model Evaluation and Saving
+from sklearn.metrics import classification_report
+import pickle
 
 def load_data(database_filepath):
-    pass
+    #loads data from database
+    engine = create_engine('sqlite:///'+database_filepath)
+    df = pd.read_sql_table('DisasterResponse', engine)
+    X = df['message']
+    Y = df.iloc[:, 4:]
+    category_names = Y.columns
+    return X, Y, category_names
 
 
 def tokenize(text):
-    pass
-
+    #Remove stop words and punctuation, and lemmatize words
+    tokens = word_tokenize(text)
+    lemmatizer = WordNetLemmatizer()
+    tokens = [lemmatizer.lemmatize(word).lower().strip() for word in tokens]
+    return tokens    
+    
 
 def build_model():
-    pass
+    #Using custom transformer to build model
+    pipeline = Pipeline([
+    ('vect', CountVectorizer(tokenizer=tokenize)),
+    ('tfidf', TfidfTransformer()),
+    ('clf', MultiOutputClassifier(RandomForestClassifier()))
+])
+    return pipeline
+
+
+def train_model(model, X_train, Y_train):
+    #grid search
+    parameters = {
+    'clf__estimator__n_estimators': [50, 100],
+    'clf__estimator__min_samples_split': [2, 4]
+}
+    cv = GridSearchCV(model, param_grid=parameters)
+    cv.fit(X_train, Y_train)
+    return cv.best_estimator_
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    pass
+    #evaluates model
+    Y_pred = model.predict(X_test)
+    for i, col in enumerate(category_names):
+        print(col)
+        print(classification_report(Y_test[col], Y_pred[:, i]))
 
 
 def save_model(model, model_filepath):
-    pass
+    #saves model to pickle file
+    with open(model_filepath, 'wb') as file:
+        pickle.dump(model, file)
 
 
 def main():
@@ -32,7 +81,8 @@ def main():
         model = build_model()
         
         print('Training model...')
-        model.fit(X_train, Y_train)
+        model = train_model(model, X_train, Y_train)
+        
         
         print('Evaluating model...')
         evaluate_model(model, X_test, Y_test, category_names)
