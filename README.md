@@ -2,7 +2,6 @@
 
 This repository contains a model for classifying disaster messages, along with the necessary data used for training and a web application to interact with the trained model.
 
-Feel free to read my [Blog Post!](https://medium.com/@alnassarnasser/disaster-message-classifier-1234567890)
 
 ## Quickstart
 
