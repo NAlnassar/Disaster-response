@@ -8,7 +8,7 @@ even a single life saved is worth the effort!
 ## Quickstart
 
 > [!NOTE]
-> Instructions to:
+> Instructions to run:
 >
 > 
 >  Enter The repo:
