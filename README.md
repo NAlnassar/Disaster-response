@@ -19,7 +19,7 @@ The dataset used for training the model is available in the `data` directory. It
 
 ## Model
 
-The trained model is saved in `classifier.pkl`. It is a machine learning model capable of classifying text messages into relevant categories. The model is built using [insert machine learning library/framework here] and achieved [insert performance metrics here] on the test set.
+The trained model is saved in `classifier.pkl`. It is a machine learning model capable of classifying text messages into relevant categories. The model is built using [Scikit-Learn]
 
 ## Web Application
 
