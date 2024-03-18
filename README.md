@@ -11,16 +11,14 @@ even a single life saved is worth the effort!
 > Instructions to:
 >
 > 
->  process data:
+>  Enter The repo:
 >
 > `cd /path/to/repo`
 >
 > process data and save to database:
->
 > `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/dismessages.db`
 >
 >  Train model from database and save the model:
-> 
 > `python models/train_classifier.py data/dismessages.db models/classifier.pkl`
 >
 > Run The Web Application:
