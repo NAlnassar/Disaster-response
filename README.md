@@ -19,7 +19,7 @@ Install the required libraries by running the following command:
 - [Pandas](https://pandas.pydata.org/): A data manipulation library for Python, providing data structures and functions for efficiently handling and analyzing **structured** data.
 - [Numpy](https://numpy.org/): A fundamental package for scientific computing with Python, supporting arrays, matrices, and tools needed for machine learning tasks and scientific projects in general.
 - [Scikit-learn](https://scikit-learn.org/): A versatile machine learning library for Python, featuring various algorithms for classification, regression, clustering, along with utilities for model evaluation and data preprocessing. Even though it is pretty high-level compared to PyTorch or TensorFlow, it gets the job done.
-- [Seaborn](https://seaborn.pydata.org/): A statistical data visualization library based on Matplotlib, providing a high-level interface for creating attractive and informative statistical graphics.
+- [NLTK](https://www.nltk.org/): NLTK is a Python library for natural language processing tasks. It offers tools for text processing, such as tokenization and tagging.
 
 ## Contribution Guidelines
 
