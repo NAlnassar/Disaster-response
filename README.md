@@ -59,8 +59,8 @@ Install the required libraries by running the following command:
     - classifier.pkl 3.1
     - train_classifier.py 3.2
    
-  -ETL Pipeline Preparation 4
-  -ML Pipeline Preparation  5
+  - ETL Pipeline Preparation 4
+  - ML Pipeline Preparation  5
 
 ## Contribution Guidelines
 
