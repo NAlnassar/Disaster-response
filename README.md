@@ -1,33 +1,35 @@
-# Disaster Response
+# Disaster Message Classifier
 
 This repository contains a model for classifying disaster messages, along with the necessary data used for training and a web application to interact with the trained model.
 
-## Contents
+Feel free to read my [Blog Post!](https://medium.com/@alnassarnasser/disaster-message-classifier-1234567890)
 
-1. [Description](#description)
-2. [Data](#data)
-3. [Model](#model)
-4. [Web Application](#web-application)
+## Quickstart
 
-## Description
+> [!NOTE]
+> When using pandas, make sure to check what the actual methods and functions are doing. Go step by step and print every step along the way; you will save yourself a lot of headaches!
 
-The goal of this project is to classify disaster messages into relevant categories, aiding in effective response during emergencies. The model is trained on a dataset containing labeled disaster messages, and it can categorize new messages into predefined categories such as 'water', 'medical_help', 'food', etc.
+### Installation
 
-## Data
-
-The dataset used for training the model is available in the `data` directory. It includes labeled messages along with their respective categories. The dataset is split into training and testing sets for model evaluation.
-
-## Model
-
-The trained model is saved in `classifier.pkl`. It is a machine learning model capable of classifying text messages into relevant categories. The model is built using [Scikit-Learn]
-
-## Web Application
-
-The web application allows users to interact with the trained model. To run the web app, ensure you have all dependencies installed by running:
-
+Install the required libraries by running the following command:
 `pip install -r requirements.txt`
 
+## Libraries Used in the Repository
 
-Once dependencies are installed, you can start the web application by executing:
+- [Pandas](https://pandas.pydata.org/): A data manipulation library for Python, providing data structures and functions for efficiently handling and analyzing **structured** data.
+- [Numpy](https://numpy.org/): A fundamental package for scientific computing with Python, supporting arrays, matrices, and tools needed for machine learning tasks and scientific projects in general.
+- [Scikit-learn](https://scikit-learn.org/): A versatile machine learning library for Python, featuring various algorithms for classification, regression, clustering, along with utilities for model evaluation and data preprocessing. Even though it is pretty high-level compared to PyTorch or TensorFlow, it gets the job done.
+- [Seaborn](https://seaborn.pydata.org/): A statistical data visualization library based on Matplotlib, providing a high-level interface for creating attractive and informative statistical graphics.
 
-`python3 run.py`
+## Contribution Guidelines
+
+This repository is not open to contributions. It has been created for personal use and specific purposes, and external contributions are not being accepted. Feel free to fork this repository for your personal use or reference.
+
+## Reporting Issues
+
+While contributions are not accepted, you can report any issues or bugs you encounter by creating an issue. However, please understand that these issues may not be actively addressed or resolved.
+
+## License
+
+This repository is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
