@@ -1,4 +1,4 @@
-# Disaster Message Classifier
+# Disaster Response
 
 This repository contains a model for classifying disaster messages, along with the necessary data used for training and a web application to interact with the trained model.
 
