@@ -39,27 +39,27 @@ Install the required libraries by running the following command:
 - [NLTK](https://www.nltk.org/): NLTK is a Python library for natural language processing tasks. It offers tools for text processing, such as tokenization and tagging.
 
 ## Files in the repository
--Root Directory
-  -app 1
+- Root Directory
+  - app 1
   
-    -templates 1.1
+    - templates 1.1
     
-      -go.html 1.1.1
-      -master.html 1.1.2
+      - go.html 1.1.1
+      - master.html 1.1.2
       
-    -run.py 1.2
+    - run.py 1.2
     
-  -data 2
+  - data 2
 
-    -Disaster_categories.csv 2.1
-    -Disaster_messages.csv 2.2
-    -dismessages.db 2.3
-    -process_data.py 2.4
+    - Disaster_categories.csv 2.1
+    - Disaster_messages.csv 2.2
+    - dismessages.db 2.3
+    - process_data.py 2.4
     
-  -models 3
+  - models 3
   
-    -classifier.pkl 3.1
-    -train_classifier.py 3.2
+    - classifier.pkl 3.1
+    - train_classifier.py 3.2
 
 ## Contribution Guidelines
 
