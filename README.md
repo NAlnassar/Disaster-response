@@ -8,6 +8,7 @@ Feel free to read my [Blog Post!](https://medium.com/@alnassarnasser/disaster-me
 
 > [!NOTE]
 > When using pandas, make sure to check what the actual methods and functions are doing. Go step by step and print every step along the way; you will save yourself a lot of headaches!
+> 
 > To Run the web application write the following: `python run.py`
 
 ### Installation
