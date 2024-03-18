@@ -18,6 +18,17 @@ from sklearn.metrics import classification_report
 import pickle
 
 def load_data(database_filepath):
+    '''
+    Load data from database
+
+    Args:
+    database_filepath: path to database
+
+    Returns:
+    X: features dataframe
+    Y: labels dataframe
+    category_names: category names
+    '''
     #loads data from database
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql_table('DisasterResponse', engine)
@@ -28,6 +39,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    Tokenize and lemmatize text
+
+    Args:
+    text: text to be tokenized
+
+    Returns:
+    tokens: list of tokens
+    '''
     #Remove stop words and punctuation, and lemmatize words
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
@@ -36,6 +56,15 @@ def tokenize(text):
     
 
 def build_model():
+    '''
+    Builds the model
+
+    Args:
+    None
+
+    Returns:
+    pipeline: model
+    '''
     #Using custom transformer to build model
     pipeline = Pipeline([
     ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -46,6 +75,17 @@ def build_model():
 
 
 def train_model(model, X_train, Y_train):
+    '''
+    Train the model using grid search
+
+    Args:
+    model: model to be trained
+    X_train: training features
+    Y_train: training labels
+
+    Returns:
+    model: trained model
+    '''
     #grid search
     parameters = {
     'clf__estimator__n_estimators': [50, 100],
@@ -57,6 +97,18 @@ def train_model(model, X_train, Y_train):
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    Evaluate model performance
+
+    Args:
+    model: trained model
+    X_test: test features
+    Y_test: test labels
+    category_names: category names
+
+    Returns:
+    None
+    '''
     #evaluates model
     Y_pred = model.predict(X_test)
     for i, col in enumerate(category_names):
@@ -65,6 +117,16 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''
+    Save model to pickle file
+
+    Args:
+    model: trained model
+    model_filepath: path to save model
+
+    Returns:
+    None
+    '''
     #saves model to pickle file
     with open(model_filepath, 'wb') as file:
         pickle.dump(model, file)

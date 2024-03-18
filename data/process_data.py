@@ -3,10 +3,29 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    Load data from csv files
+
+    Args:
+    messages_filepath: path to messages csv file
+    categories_filepath: path to categories csv file
+
+    Returns:
+    messages: messages dataframe
+    '''
     return pd.read_csv(messages_filepath), pd.read_csv(categories_filepath)
 
 
 def clean_data(df):
+    '''
+    Clean data
+    
+    Args:
+    df: dataframe
+    
+    Returns:
+    df: cleaned dataframe
+    '''
     #Merges the messages and categories datasets using the common id
     df = pd.merge(df[0], df[1], on='id')
     #Create dataframe with individual category columns 
@@ -17,9 +36,14 @@ def clean_data(df):
     category_colnames = row.apply(lambda x: x[:-2]).tolist()
     #Rename the columns of `categories`
     categories.columns = category_colnames
-    #Convert category values to numbers
+    # drop rows where values that are not 0 or 1 and Convert category values to binary
     for column in categories:
-        categories[column] = categories[column].str[-1].astype(int)
+        # set each value to be the last character of the string
+        categories[column] = categories[column].str[-1]
+        # convert column from string to numeric
+        categories[column] = categories[column].astype(int)
+        if categories[column].nunique() > 2:
+            categories[column] = categories[categories[column]<2][column]
     #Drop the original categories column from `df`
     df = df.drop('categories', axis=1)
     #Concatenate the original dataframe with the new `categories` dataframe
@@ -32,6 +56,16 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''
+    Save data to database
+    
+    Args:
+    df: dataframe
+    database_filename: path to database
+    
+    Returns:
+    None
+    '''
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('DisasterResponse', engine, index=False, if_exists='replace') 
     
